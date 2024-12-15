@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
+import './RootNode.css'
 
-export default memo(({ data, isConnectable }) => {
+export default memo(({ data, isConnectable, selected, }) => {
   return (
     <>
       <Handle
@@ -12,8 +12,8 @@ export default memo(({ data, isConnectable }) => {
         onConnect={(params) => console.log('handle onConnect', params)}
         isConnectable={isConnectable}
       />
-      <div>
-        Custom Color Picker Node: <strong>a</strong>
+      <div className='node' style={{ outlineColor: (selected) ?  '#555555': '#3C3C3C', outlineWidth: (selected) ? '2px' : '1px'}}>
+        <p className='title'>Root Node</p>
       </div >
      
       <Handle
