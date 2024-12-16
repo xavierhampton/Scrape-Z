@@ -13,7 +13,13 @@ export default memo(({ data, isConnectable, selected, }) => {
         isConnectable={isConnectable}
       />
       <div className='node' style={{ outlineColor: (selected) ?  '#555555': '#3C3C3C', outlineWidth: (selected) ? '2px' : '1px'}}>
-        <p className='title'>Root Node</p>
+        <div className='header'>
+            <p className='title'>Root</p>
+        </div>
+        <div className='subsection'>
+          
+        </div>
+        
       </div >
      
       <Handle
