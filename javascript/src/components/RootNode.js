@@ -17,7 +17,19 @@ export default memo(({ data, isConnectable, selected, }) => {
             <p className='title'>Root</p>
         </div>
         <div className='subsection'>
-          
+          <div className='row'>
+              <p className="row-title">URL</p>
+              <input type='text' className="url-input"></input>
+          </div>
+          <div className='row'>
+
+          </div>
+          <div className='row'>
+
+          </div>
+          <div className='row'>
+
+          </div>
         </div>
         
       </div >
