@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
+import {motion} from 'motion/react'
 import {
   ReactFlow,
   MiniMap,
@@ -8,6 +9,7 @@ import {
   useEdgesState,
   addEdge,
 } from '@xyflow/react';
+
  
 import '@xyflow/react/dist/style.css';
 import './App.css'
@@ -23,8 +25,16 @@ const initialNodes = [
   { id: '2', position: { x: 0, y: 100 }, data: { label: '2' }},
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2',}];
+
+
  
 export default function App() {
+
+const [toggleBar, setToggleBar] = useState(false)
+const toggle = () => {
+  setToggleBar(!toggleBar)
+}
+
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
  
@@ -34,6 +44,7 @@ export default function App() {
   );
  
   return (
+    
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
         colorMode='dark'
@@ -48,6 +59,17 @@ export default function App() {
         <Controls />
         <Background variant="lines" gap={50} size={1} />
       </ReactFlow>
+
+      <div className="toggleBarContainer">
+        {!toggleBar ? (
+          <motion.button whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} className="arrow" onClick={toggle}><p> &lt; </p></motion.button>
+        ) 
+        
+        : (<motion.div animate={{width: '100%'}} className="addSection"></motion.div>)
+        }
+      </div>
+
     </div>
+    
   );
 }
