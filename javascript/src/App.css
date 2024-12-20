@@ -1,7 +1,7 @@
 .toggleBarContainer {
     position: absolute;
     top: 0px;
-    right: 20px;
+    right: 0px;
     width: 30%;
     height: 100vh;
 
@@ -17,6 +17,7 @@
     background-color: #282828;
     border: 2px solid #36C182;
     border-radius: 10px;
+    margin-right: 5px;
     
 
     display: flex;
@@ -34,7 +35,17 @@
 }
 
 .addSection {
-    background-color: blue;
+    background-color: #141414;
+    border-left: solid 1px  rgba(255,255,255,0.6);
     height: 100%;
     width: 0%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+.sidebarHeader {
+    color: white;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
 }

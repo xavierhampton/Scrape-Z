@@ -47,6 +47,7 @@ const toggle = () => {
     
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
+      onClick={() => {setToggleBar(false)}}
         colorMode='dark'
         nodeTypes={nodeTypes}
       
@@ -61,12 +62,15 @@ const toggle = () => {
       </ReactFlow>
 
       <div className="toggleBarContainer">
-        {!toggleBar ? (
+        {!toggleBar && (
           <motion.button whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} className="arrow" onClick={toggle}><p> &lt; </p></motion.button>
         ) 
-        
-        : (<motion.div animate={{width: '100%'}} className="addSection"></motion.div>)
-        }
+      }
+      </div>
+        <div className="toggleBarContainer">
+         <motion.div animate={{width: (toggleBar) ? '100%' : 0}} className="addSection">
+            <div className='sidebarHeader' style={{fontSize: 30}}>Nodes</div>
+          </motion.div>
       </div>
 
     </div>
