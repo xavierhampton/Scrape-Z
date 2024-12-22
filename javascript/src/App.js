@@ -67,11 +67,11 @@ const toggle = () => {
         ) 
       }
       </div>
-        <div className="toggleBarContainer">
-         <motion.div animate={{width: (toggleBar) ? '100%' : 0}} className="addSection">
-            <div className='sidebarHeader' style={{fontSize: 30}}>Nodes</div>
+        <motion.div animate={{width: (toggleBar) ? '30%' : '0%'}}className="toggleBarContainer">
+         <motion.div animate={{width: (toggleBar) ? '100%' : '0%'}} className="addSection">
+            <div className='sidebarHeader'> Nodes</div>
           </motion.div>
-      </div>
+      </motion.div>
 
     </div>
     
