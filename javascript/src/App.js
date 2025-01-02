@@ -67,9 +67,16 @@ const toggle = () => {
         ) 
       }
       </div>
-        <motion.div animate={{width: (toggleBar) ? '30%' : '0%'}}className="toggleBarContainer">
+        <motion.div animate={{width: (toggleBar) ? '25%' : '0%'}}className="toggleBarContainer">
          <motion.div animate={{width: (toggleBar) ? '100%' : '0%'}} className="addSection">
-            <div className='sidebarHeader'> Nodes</div>
+
+            <div className='sidebarHeader'>
+              <p>Nodes</p>
+              <motion.p className='closeButton' whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={toggle}>X</motion.p>
+            </div>
+            
+
+
           </motion.div>
       </motion.div>
 
