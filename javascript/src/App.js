@@ -67,16 +67,19 @@ const toggle = () => {
         ) 
       }
       </div>
-        <motion.div animate={{width: (toggleBar) ? '25%' : '0%'}}className="toggleBarContainer">
+        <motion.div animate={{width: (toggleBar) ? '25vw' : '0%'}}className="toggleBarContainer">
          <motion.div animate={{width: (toggleBar) ? '100%' : '0%'}} className="addSection">
 
             <div className='sidebarHeader'>
               <p>Nodes</p>
               <motion.p className='closeButton' whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={toggle}>X</motion.p>
             </div>
+
+            <div className='nodelist'>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}}>Root Node</motion.div>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}}>Click</motion.div>
+            </div>
             
-
-
           </motion.div>
       </motion.div>
 
