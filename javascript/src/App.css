@@ -87,15 +87,11 @@ body {
     color: white;
     font-size: 26px;
     text-align: center;
+    text-wrap: nowrap;
 
     border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
 .nodelist > div:hover {
     cursor: pointer;
-}
-
-.nodetext {
-    padding: 0px;
-    margin: 0px;
 }
