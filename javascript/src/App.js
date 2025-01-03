@@ -8,23 +8,35 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
+  MarkerType,
 } from '@xyflow/react';
 
- 
 import '@xyflow/react/dist/style.css';
 import './App.css'
 import RootNode from './components/RootNode';
 
+
+
 const nodeTypes = {
   'RootNode': RootNode,
 }
+
 
  
 const initialNodes = [
   { id: '1', type: 'RootNode', position: { x: 0, y: 0 },},
   { id: '2', position: { x: 0, y: 100 }, data: { label: '2' }},
 ];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, type: 'smoothstep'}];
+const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, type: 'smoothstep', 
+  markerEnd: {
+    type: MarkerType.ArrowClosed,
+    width: 7,
+    height: 7,
+    color: 'rgba(255,255,255,0.6)',
+  },
+  style: {
+  strokeWidth: 3, stroke: 'rgba(255,255,255,0.6)',
+}  }];
 
 
  
@@ -50,6 +62,7 @@ const toggle = () => {
       onClick={() => {setToggleBar(false)}}
         colorMode='dark'
         nodeTypes={nodeTypes}
+
       
         nodes={nodes}
         edges={edges}
