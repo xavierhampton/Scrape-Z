@@ -9,6 +9,7 @@ import {
   useEdgesState,
   addEdge,
   MarkerType,
+  ConnectionLineType,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
@@ -22,7 +23,7 @@ const nodeTypes = {
 }
 const initialNodes = [
   { id: '1', type: 'RootNode', position: { x: 0, y: 0 },},
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' }},
+  { id: '2', type: "ClickNode", position: { x: 0, y: 100 }, data: { label: '2' }},
 ];
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, type: 'smoothstep', 
@@ -50,9 +51,19 @@ const toggle = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
  
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => setEdges((eds) => addEdge({...params, animated :true, type: 'smoothstep', markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 7,
+      height: 7,
+      color: 'rgba(255,255,255,0.6)',
+    },
+    style: {
+      strokeWidth: 3, stroke: 'rgba(255,255,255,0.6)',
+    } }, eds)),
     [setEdges],
   );
+
+
 
   const addNode = (nodeType) => {
     let newNode = {}
@@ -80,6 +91,8 @@ const toggle = () => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        connectionLineType={ConnectionLineType.SmoothStep}
+        connectionLineStyle={{strokeWidth: 3}}
       >
         <Controls />
         <Background variant="lines" gap={50} size={1} />

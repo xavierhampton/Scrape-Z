@@ -33,13 +33,6 @@ export default memo(({ data, isConnectable, selected, }) => {
         </div>
         
       </div >
-     
-      <Handle
-        type="source"
-        position={Position.Right}
-        id="b"
-        isConnectable={isConnectable}
-      />
     </>
   );
 });

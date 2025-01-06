@@ -7,13 +7,13 @@ export default memo(({ data, isConnectable, selected, }) => {
   return (
     <>
       <Handle
-        type="input"
+        type="source"
         position={Position.Bottom}
         onConnect={(params) => console.log('handle onConnect', params)}
         isConnectable={isConnectable}
       />
       <Handle
-        type="source"
+        type="target"
         position={Position.Top}
         onConnect={(params) => console.log('handle onConnect', params)}
         isConnectable={isConnectable}
