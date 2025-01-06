@@ -14,9 +14,11 @@ import {
 import '@xyflow/react/dist/style.css';
 import './App.css'
 import RootNode from './components/RootNode';
+import ClickNode from './components/ClickNode';
 
 const nodeTypes = {
   'RootNode': RootNode,
+  'ClickNode': ClickNode
 }
 const initialNodes = [
   { id: '1', type: 'RootNode', position: { x: 0, y: 0 },},
@@ -56,6 +58,10 @@ const toggle = () => {
     let newNode = {}
     if (nodeType == "RootNode") {
       newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 },}
+    }
+    else if (nodeType == "ClickNode") {
+      newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 },}
+
     }
 
     setNodeItr(nodeItr + 1)
@@ -97,7 +103,7 @@ const toggle = () => {
 
             <div className='nodelist'>
               <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("RootNode")}}>Root Node</motion.div>
-              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}}>Click</motion.div>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("ClickNode")}}>Click</motion.div>
             </div>
             
           </motion.div>
