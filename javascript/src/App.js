@@ -16,14 +16,16 @@ import '@xyflow/react/dist/style.css';
 import './App.css'
 import RootNode from './components/RootNode';
 import ClickNode from './components/ClickNode';
+import SaveNode from './components/SaveNode';
 
 const nodeTypes = {
   'RootNode': RootNode,
-  'ClickNode': ClickNode
+  'ClickNode': ClickNode,
+  'SaveNode': SaveNode
 }
 const initialNodes = [
-  { id: '1', type: 'RootNode', position: { x: 0, y: 0 },},
-  { id: '2', type: "ClickNode", position: { x: 0, y: 100 }, data: { label: '2' }},
+  { id: '1', type: 'RootNode', position: { x: 50, y: 50 },},
+  { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: { label: '2' }},
 ];
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, type: 'smoothstep', 
@@ -70,6 +72,9 @@ const toggle = () => {
     if (nodeType == "RootNode") {
       newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 },}
     }
+    else if (nodeType == "SaveNode") {
+      newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 },}
+    }
     else if (nodeType == "ClickNode") {
       newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 },}
 
@@ -115,8 +120,10 @@ const toggle = () => {
             </div>
 
             <div className='nodelist'>
-              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("RootNode")}}>Root Node</motion.div>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("RootNode")}}>Root</motion.div>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("SaveNode")}}>Save</motion.div>
               <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("ClickNode")}}>Click</motion.div>
+
             </div>
             
           </motion.div>
