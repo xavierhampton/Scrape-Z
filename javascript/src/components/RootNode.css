@@ -46,10 +46,11 @@
     color: white;
     font-weight: 700;
     padding-left: 10px;
+    
 }
 .url-input {
     height: 25px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #1E1E1E;
     border: 1px solid white;
 

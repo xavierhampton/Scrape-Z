@@ -14,9 +14,11 @@ import {
 
 import '@xyflow/react/dist/style.css';
 import './App.css'
-import RootNode from './components/RootNode';
+
 import ClickNode from './components/ClickNode';
 import SaveNode from './components/SaveNode';
+
+import RootNode from './components/RootNode';
 
 const nodeTypes = {
   'RootNode': RootNode,
