@@ -18,9 +18,10 @@ export default memo(({ data, isConnectable, selected, }) => {
         </div>
         <div className='subsection'>
           <div className='row'>
-              
+          <input type='text' className="url-input" placeholder='CSS Selector' ></input>
           </div>
           <div className='row'>
+          
 
           </div>
         </div>
