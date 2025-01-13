@@ -21,7 +21,7 @@ export default memo(({ data, isConnectable, selected, }) => {
           <input type='text' className="url-input" placeholder='CSS Selector' ></input>
           </div>
           <div className='row'>
-          
+          <input type='text' className="prefix-input" placeholder='File Prefix' ></input>
 
           </div>
         </div>
