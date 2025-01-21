@@ -5,6 +5,7 @@
 javascript/node_modules
 /.pnp
 .pnp.js
+/python/venv
 
 # testing
 /coverage
