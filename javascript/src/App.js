@@ -1,8 +1,8 @@
+//Imports
 import React, { useCallback, useState } from 'react';
 import {motion} from 'motion/react'
 import {
   ReactFlow,
-  MiniMap,
   Controls,
   Background,
   useNodesState,
@@ -15,21 +15,24 @@ import {
 import '@xyflow/react/dist/style.css';
 import './App.css'
 
+//Component Nodes
 import ClickNode from './components/ClickNode';
 import SaveNode from './components/SaveNode';
-
 import RootNode from './components/RootNode';
 
+//Node Types for React Flow
 const nodeTypes = {
   'RootNode': RootNode,
   'ClickNode': ClickNode,
   'SaveNode': SaveNode
 }
+//Initialize Nodes
 const initialNodes = [
   { id: '1', type: 'RootNode', position: { x: 50, y: 50 },},
   { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: { label: '2' }},
 ];
 
+//Initalize Edges
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, type: 'smoothstep', 
   markerEnd: {
     type: MarkerType.ArrowClosed,
@@ -42,18 +45,24 @@ const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, ty
 }  }];
 
 
-
+//Start of App
 export default function App() {
 
+//Keeps An Iterator for Node ID
 const [nodeItr, setNodeItr] = useState(3)
+
+//Toggle Bar Functionality
 const [toggleBar, setToggleBar] = useState(false)
 const toggle = () => {
   setToggleBar(!toggleBar)
 }
 
+//Sets Initial Nodes and Edges to ReactFlow
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
  
+
+  //Sets Style of Edges When Created
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge({...params, animated :true, type: 'smoothstep', markerEnd: {
       type: MarkerType.ArrowClosed,
@@ -68,16 +77,16 @@ const toggle = () => {
   );
 
 
-
+//Creates a Node and adds it to ReactFlow DOM
   const addNode = (nodeType) => {
     let newNode = {}
-    if (nodeType == "RootNode") {
+    if (nodeType === "RootNode") {
       newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 },}
     }
-    else if (nodeType == "SaveNode") {
+    else if (nodeType === "SaveNode") {
       newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 },}
     }
-    else if (nodeType == "ClickNode") {
+    else if (nodeType === "ClickNode") {
       newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 },}
 
     }
@@ -86,9 +95,10 @@ const toggle = () => {
     setNodes([...nodes, newNode])
   }
  
+  //The DOM
   return (
-    
     <div style={{ width: '100vw', height: '100vh' }}>
+
       <ReactFlow
       onClick={() => {setToggleBar(false)}}
         colorMode='dark'
@@ -105,16 +115,16 @@ const toggle = () => {
         <Background variant="lines" gap={50} size={1} />
       </ReactFlow>
 
-
+      {/* Toggle Button */}
       <div className="toggleBarContainer">
         {!toggleBar && (
           <motion.button whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} className="arrow" onClick={toggle}><p> &lt; </p></motion.button>
         ) 
       }
-
       </div>
+
         <motion.div animate={{width: (toggleBar) ? '25vw' : '0%'}}className="toggleBarContainer">
-         <motion.div animate={{width: (toggleBar) ? '100%' : '0%'}} className="addSection">
+        <motion.div animate={{width: (toggleBar) ? '100%' : '0%'}} className="addSection">
 
             <div className='sidebarHeader'>
               <p>Nodes</p>
