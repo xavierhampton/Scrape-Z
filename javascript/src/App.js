@@ -1,5 +1,5 @@
 //Imports
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {motion} from 'motion/react'
 import {
   ReactFlow,
@@ -28,8 +28,8 @@ const nodeTypes = {
 }
 //Initialize Nodes
 const initialNodes = [
-  { id: '1', type: 'RootNode', position: { x: 50, y: 50 },},
-  { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: { label: '2' }},
+  { id: '1', type: 'RootNode', position: { x: 50, y: 50 }, data: {}},
+  { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: {}},
 ];
 
 //Initalize Edges
@@ -81,20 +81,46 @@ const toggle = () => {
   const addNode = (nodeType) => {
     let newNode = {}
     if (nodeType === "RootNode") {
-      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 },}
+      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 }, data: {}}
     }
     else if (nodeType === "SaveNode") {
-      newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 },}
+      newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 }, data: {}}
     }
     else if (nodeType === "ClickNode") {
-      newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 },}
+      newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 }, data: {}}
 
     }
 
     setNodeItr(nodeItr + 1)
     setNodes([...nodes, newNode])
   }
- 
+
+  
+  //Turn Nodes Into Readable Object
+  function objectify() {
+    let obj = {}
+  }
+
+
+  //Assign a State for Data
+  const [data, setData] = useState("")
+  //Send Data to Backend
+  function run() {
+    fetch('https://localhost:5000', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+  }
+
+  useEffect(() => {
+    console.log(nodes)
+    console.log(edges)
+  }, [nodes, edges])
+
+
   //The DOM
   return (
     <div style={{ width: '100vw', height: '100vh' }}>

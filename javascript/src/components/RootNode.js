@@ -1,9 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
 import './RootNode.css'
 
 export default memo(({ data, isConnectable, selected, }) => {
+
   return (
     <>
       <Handle
@@ -18,7 +19,7 @@ export default memo(({ data, isConnectable, selected, }) => {
         </div>
         <div className='subsection'>
           <div className='row'>
-              <input type='text' className="url-input" placeholder='URL' ></input>
+              <input type='text' className="url-input" placeholder='URL' onChange={(e) => {data.url = e.target.value}}></input>
           </div>
           <div className='row'>
 

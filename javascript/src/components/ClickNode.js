@@ -24,7 +24,7 @@ export default memo(({ data, isConnectable, selected, }) => {
         </div>
         <div className='subsection'>
           <div className='row'>
-          <input type='text' className="url-input" placeholder='CSS Selector' ></input>
+          <input type='text' className="url-input" placeholder='CSS Selector' onChange={(e) => {data.cssSelector = e.target.value}}></input>
           </div>
           <div className='row'>
 
