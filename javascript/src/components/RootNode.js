@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-import './RootNode.css'
+import '../static/Node.css'
 
 export default memo(({ data, isConnectable, selected, }) => {
 

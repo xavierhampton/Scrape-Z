@@ -13,7 +13,7 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-import './App.css'
+import './static/App.css'
 
 //Component Nodes
 import ClickNode from './components/ClickNode';

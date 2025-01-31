@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-import './ClickNode.css'
+import '../static/Node.css'
 
 export default memo(({ data, isConnectable, selected, }) => {
   return (
