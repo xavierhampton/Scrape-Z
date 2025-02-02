@@ -1,5 +1,6 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
+import {ReactComponent as StartButton} from '../assets/svg/play-button-svg.svg'
 
 import '../static/Node.css'
 
@@ -16,6 +17,11 @@ export default memo(({ data, isConnectable, selected, }) => {
       <div className='node-root' style={{ outlineColor: (selected) ?  '#555555': '#3C3C3C', outlineWidth: (selected) ? '2px' : '1px'}}>
         <div className='header'>
             <p className='title'>Root</p>
+
+            <div className='run-container' onClick={data.f}>
+            <StartButton  className="run-button"/>
+            </div>
+            
         </div>
         <div className='subsection'>
           <div className='row'>
@@ -25,7 +31,7 @@ export default memo(({ data, isConnectable, selected, }) => {
 
           </div>
           <div className='row'>
-
+            
           </div>
           <div className='row'>
 

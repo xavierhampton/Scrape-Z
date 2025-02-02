@@ -20,15 +20,25 @@ import ClickNode from './components/ClickNode';
 import SaveNode from './components/SaveNode';
 import RootNode from './components/RootNode';
 
+
+
 //Node Types for React Flow
 const nodeTypes = {
   'RootNode': RootNode,
   'ClickNode': ClickNode,
   'SaveNode': SaveNode
 }
+
+//Start of App
+export default function App() {
+
+//Keeps An Iterator for Node ID
+const [nodeItr, setNodeItr] = useState(3)
+
+
 //Initialize Nodes
 const initialNodes = [
-  { id: '1', type: 'RootNode', position: { x: 50, y: 50 }, data: {}},
+  { id: '1', type: 'RootNode', position: { x: 50, y: 50 }, data: {f: (() => {run(String(nodeItr))})}},
   { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: {}},
 ];
 
@@ -44,12 +54,6 @@ const initialEdges = [{ id: 'e1-2', source: '1', target: '2', animated :true, ty
   strokeWidth: 3, stroke: 'rgba(255,255,255,0.6)',
 }  }];
 
-
-//Start of App
-export default function App() {
-
-//Keeps An Iterator for Node ID
-const [nodeItr, setNodeItr] = useState(3)
 
 //Toggle Bar Functionality
 const [toggleBar, setToggleBar] = useState(false)
@@ -81,7 +85,7 @@ const toggle = () => {
   const addNode = (nodeType) => {
     let newNode = {}
     if (nodeType === "RootNode") {
-      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 }, data: {}}
+      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 }, data: {f: (() => {run(String(nodeItr))})}}
     }
     else if (nodeType === "SaveNode") {
       newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 }, data: {}}
@@ -95,29 +99,30 @@ const toggle = () => {
     setNodes([...nodes, newNode])
   }
 
-  
-  //Turn Nodes Into Readable Object
-  function objectify() {
-    let obj = {}
-  }
+    //Assign a State for Data
+    const [data, setData] = useState("")
+
+    //Send Data to Backend
+    async function run() {
+      try {
+        let response = await fetch('https://localhost:5000', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+      }
+      catch {
+        console.log("Error With Flask Server")
+      }
+    }
 
 
-  //Assign a State for Data
-  const [data, setData] = useState("")
-  //Send Data to Backend
-  function run() {
-    fetch('https://localhost:5000', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-  }
 
+  //Sets Data State to Nodes and Edges
   useEffect(() => {
-    console.log(nodes)
-    console.log(edges)
+    setData({nodes: nodes, edges: edges})
   }, [nodes, edges])
 
 

@@ -16,10 +16,16 @@
     background-color: #36C182;
     padding: 10px;
   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 
     font-size: 20px;
+
+
 }
 .subsection {
     display: flex;
@@ -27,7 +33,7 @@
     background-color: #1E1E1E;
 }
 .title {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     color: #1E1E1E;
     text-align: center;
@@ -89,4 +95,34 @@
 }
 .prefix-input:focus {
     outline: none;
+}
+
+.run-container {
+    border-radius: 5px;
+ 
+    height: 40px;
+    width: 40px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: -7px;
+    margin-top: -7px;
+    margin-left: -35px;
+    margin-right: -5px;
+}
+
+.run-container:hover {
+    background-color: rgba(255,255,255,0.4);
+    cursor: pointer;
+}
+
+.run-button {
+    width: 30px;
+    height: 30px;
+    
+    margin-bottom: -7px;
+    margin-top: -7px;
+
 }
