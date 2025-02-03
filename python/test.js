@@ -10,4 +10,4 @@ const Test = async () => {
       });
       console.log(response.ok)
 }
-a()
+Test()

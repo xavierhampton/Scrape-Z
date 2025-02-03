@@ -2,8 +2,10 @@
 from bs4 import BeautifulSoup
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 #Establishes GET Request for defualt route
 @app.route("/", methods=["GET"])
@@ -15,6 +17,6 @@ def ping():
 def main():
     #Gets JSON in Type 'dict'
     data = request.get_json(silent=True)
-    
+    print(data)
     return "<p>Hello, World2!</p>"
 
