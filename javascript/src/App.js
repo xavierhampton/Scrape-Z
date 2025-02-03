@@ -104,13 +104,15 @@ const toggle = () => {
 
     //Send Data to Backend
     async function run() {
+      console.log(data)
       try {
-        let response = await fetch('https://localhost:5000', {
+        let response = await fetch('http://localhost:5000', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
+          mode: "cors"
         })
       }
       catch {
