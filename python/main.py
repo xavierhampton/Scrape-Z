@@ -15,8 +15,7 @@ def ping():
 #Establishes the webserver's POST route
 @app.route("/", methods=["POST"])
 def main():
-    #Gets JSON in Type 'dict'
-    data = request.get_json(silent=True)
-    print(data)
+    content = request.get_json(silent=True)
+    print(content)
     return "<p>Hello, World2!</p>"
 

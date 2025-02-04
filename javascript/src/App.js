@@ -99,19 +99,16 @@ const toggle = () => {
     setNodes([...nodes, newNode])
   }
 
-    //Assign a State for Data
-    const [data, setData] = useState("")
-
     //Send Data to Backend
     async function run() {
-      console.log(data)
+
       try {
         let response = await fetch('http://localhost:5000', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({nodes: nodes, edges: edges}),
           mode: "cors"
         })
       }
@@ -119,15 +116,7 @@ const toggle = () => {
         console.log("Error With Flask Server")
       }
     }
-
-
-
-  //Sets Data State to Nodes and Edges
-  useEffect(() => {
-    setData({nodes: nodes, edges: edges})
-  }, [nodes, edges])
-
-
+    
   //The DOM
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
