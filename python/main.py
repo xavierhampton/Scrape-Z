@@ -15,7 +15,16 @@ def ping():
 #Establishes the webserver's POST route
 @app.route("/", methods=["POST"])
 def main():
-    content = request.get_json(silent=True)
-    print(content)
-    return "<p>Hello, World2!</p>"
+    #Gets Data from Post Request
+    data = request.get_json(silent=True)
+    nodes = data["nodes"]
+    edges = data["edges"]
+
+    #Iterates through all node types and finds Root Nodes
+    for v in nodes.values():
+        if v["type"] == "RootNode":
+            #Root Node Handling
+            print(v)
+
+    return "<p>Hello, World!</p>"
 
