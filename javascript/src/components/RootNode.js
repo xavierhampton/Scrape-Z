@@ -18,7 +18,7 @@ export default memo(({ data, isConnectable, selected, }) => {
         <div className='header'>
             <p className='title'>Root</p>
 
-            <div className='run-container' onClick={data.f}>
+            <div className='run-container' onClick={() => {data.f(data.id)}} >
             <StartButton  className="run-button"/>
             </div>
             

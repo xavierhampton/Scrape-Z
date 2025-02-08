@@ -38,7 +38,7 @@ const [nodeItr, setNodeItr] = useState(3)
 
 //Initialize Nodes
 const initialNodes = [
-  { id: '1', type: 'RootNode', position: { x: 50, y: 50 }, data: {f: (() => {run(String(nodeItr))})}},
+  { id: '1', type: 'RootNode', position: { x: 50, y: 50 }, data: {f: run, id: String(nodeItr)}},
   { id: '2', type: "SaveNode", position: { x: 200, y: 350 }, data: {}},
 ];
 
@@ -85,14 +85,13 @@ const toggle = () => {
   const addNode = (nodeType) => {
     let newNode = {}
     if (nodeType === "RootNode") {
-      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 }, data: {f: (() => {run(String(nodeItr))})}}
+      newNode = { id: String(nodeItr), type: 'RootNode', position: { x: 0, y: 0 }, data: {f: run, id: String(nodeItr)}}
     }
     else if (nodeType === "SaveNode") {
       newNode = { id: String(nodeItr), type: 'SaveNode', position: { x: 0, y: 0 }, data: {}}
     }
     else if (nodeType === "ClickNode") {
       newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 }, data: {}}
-
     }
 
     setNodeItr(nodeItr + 1)
@@ -101,7 +100,6 @@ const toggle = () => {
 
     //Send Data to Backend
     async function run() {
-
       try {
         let response = await fetch('http://localhost:5000', {
           method: 'POST',
@@ -116,6 +114,14 @@ const toggle = () => {
         console.log("Error With Flask Server")
       }
     }
+
+    //If Nodes, Edges Update, Update the Function Reference
+    useEffect(() => {
+      for (let node of nodes) {
+        if (node.type === "RootNode") {
+            node.data.f = run
+        }
+    }}, [nodes, edges])
     
   //The DOM
   return (
