@@ -1,5 +1,6 @@
 #Imports
 from bs4 import BeautifulSoup
+from selenium import webdriver
 from flask import Flask
 from flask import request
 from flask_cors import CORS
