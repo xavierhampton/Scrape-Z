@@ -1,6 +1,9 @@
 #Imports
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask
 from flask import request
 from flask_cors import CORS
@@ -25,12 +28,13 @@ def main():
     for v in nodes:
         if v["type"] == "RootNode":
             #Root Node Handling
-            handleNode(v, nodes, edges)
+            driver = webdriver.Chrome()
+            handleNode(v, nodes, edges, driver)
 
     return "<p>Hello, World!</p>"
 
 #Recursively handles nodes
-def handleNode(n, nodes, edges):
+def handleNode(n, nodes, edges, driver):
     if n["type"] == "SaveNode":
         #Save Node Handling
         print("Save Node")
@@ -39,13 +43,13 @@ def handleNode(n, nodes, edges):
         #Root Node Handling
         print("Root Node")
         for v in findConnections(n, nodes, edges):
-            handleNode(v, nodes, edges)
+            handleNode(v, nodes, edges, driver)
 
     elif n["type"] == "ClickNode":
         #Click Node Handling
         print("Click Node")
         for v in findConnections(n, nodes, edges):
-            handleNode(v, nodes, edges)
+            handleNode(v, nodes, edges,driver)
 
 #Finds a node by id
 def findNode(id, nodes):
