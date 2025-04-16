@@ -36,7 +36,7 @@ Each node represents an action in your scraping pipeline. The graph structure de
 
 ## 🖼️ UI Preview
 
-
+<img src="https://github.com/xavierhampton/Scrape-Z/blob/demo/assets/demo2.png" width= 600 />
 
 ---
 
