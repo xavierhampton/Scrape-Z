@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask
+import flask
 from flask import request
 from flask_cors import CORS
 
@@ -14,7 +15,7 @@ CORS(app)
 #Establishes GET Request for defualt route
 @app.route("/", methods=["GET"])
 def ping():
-    return "<p>Hello, World!</p>"
+    return flask.jsonify({"message": "Hello, World!"})
 
 #Establishes the webserver's POST route
 @app.route("/", methods=["POST"])
@@ -66,5 +67,9 @@ def findConnections(n, nodes, edges):
             children.append(findNode(e["target"], nodes))
     
     return children
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
 
