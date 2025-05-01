@@ -70,7 +70,7 @@ def handleNode(n, nodes, edges, driver):
 
     elif n["type"] == "InputNode":
         #Input Node Handling
-        driver.find_element(by=By.CSS_SELECTOR, value=n['data']["cssSelector"]).send_keys(n["data"]["input"])
+        driver.send_keys(n["data"]["input"])
         driver.implicitly_wait(0.5)
 
     for v in findConnections(n, nodes, edges):
