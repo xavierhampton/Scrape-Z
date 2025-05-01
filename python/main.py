@@ -29,6 +29,7 @@ def main():
     for v in nodes:
         if v["type"] == "RootNode":
             #Root Node Handling
+            print("Root Node")
             driver = webdriver.Chrome()
             handleNode(v, nodes, edges, driver)
 
@@ -39,12 +40,6 @@ def handleNode(n, nodes, edges, driver):
     if n["type"] == "SaveNode":
         #Save Node Handling
         print("Save Node")
-
-    elif n['type'] == "RootNode":
-        #Root Node Handling
-        print("Root Node")
-        for v in findConnections(n, nodes, edges):
-            handleNode(v, nodes, edges, driver)
 
     elif n["type"] == "ClickNode":
         #Click Node Handling
