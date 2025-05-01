@@ -19,6 +19,7 @@ import './static/App.css'
 import ClickNode from './components/ClickNode';
 import SaveNode from './components/SaveNode';
 import RootNode from './components/RootNode';
+import InputNode from './components/InputNode';
 
 
 
@@ -26,7 +27,8 @@ import RootNode from './components/RootNode';
 const nodeTypes = {
   'RootNode': RootNode,
   'ClickNode': ClickNode,
-  'SaveNode': SaveNode
+  'SaveNode': SaveNode,
+  'InputNode': InputNode,
 }
 
 //Start of App
@@ -92,6 +94,9 @@ const toggle = () => {
     }
     else if (nodeType === "ClickNode") {
       newNode = { id: String(nodeItr), type: 'ClickNode', position: { x: 0, y: 0 }, data: {}}
+    }
+    else if (nodeType === "InputNode") {
+      newNode = { id: String(nodeItr), type: 'InputNode', position: { x: 0, y: 0 }, data: {}}
     }
 
     setNodeItr(nodeItr + 1)
@@ -163,6 +168,8 @@ const toggle = () => {
               <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("RootNode")}}>Root</motion.div>
               <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("SaveNode")}}>Save</motion.div>
               <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("ClickNode")}}>Click</motion.div>
+              <motion.div animate={{width: (toggleBar) ? '55%' : '0%'}} whileTap={{ scale: 0.9, rotate: 3, opacity: 0.9 }} whileHover = {{scale: 1.15}} onClick={() => {addNode("InputNode")}}>Input</motion.div>
+
 
             </div>
             
