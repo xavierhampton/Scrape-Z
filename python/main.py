@@ -31,9 +31,15 @@ def main():
             #Root Node Handling
             print("Root Node")
             driver = webdriver.Chrome()
+
+            driver.get(v["url"])
+
+            #Waits for the page to load
+            driver.implicitly_wait(0.5)
+
             handleNode(v, nodes, edges, driver)
 
-    return "<p>Hello, World!</p>"
+    return "Successful!"
 
 #Recursively handles nodes
 def handleNode(n, nodes, edges, driver):
@@ -43,9 +49,22 @@ def handleNode(n, nodes, edges, driver):
 
     elif n["type"] == "ClickNode":
         #Click Node Handling
+        driver.find_element(by=By.CSS_SELECTOR, value=n['data']["cssSelector"]).click()
+        driver.implicitly_wait(0.5)
+
         print("Click Node")
-        for v in findConnections(n, nodes, edges):
-            handleNode(v, nodes, edges,driver)
+        print(n["data"])
+
+    elif n["type"] == "InputNode":
+        #Input Node Handling
+        driver.find_element(by=By.CSS_SELECTOR, value=n['data']["cssSelector"]).send_keys(n["data"]["input"])
+        driver.implicitly_wait(0.5)
+
+        print("Input Node")
+        print(n["data"])
+
+    for v in findConnections(n, nodes, edges):
+        handleNode(v, nodes, edges,driver)
 
 #Finds a node by id
 def findNode(id, nodes):
