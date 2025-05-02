@@ -25,8 +25,10 @@ Each node represents an action in your scraping pipeline. The graph structure de
 
 - 🔗 **Root Node**  
   - Sets the **starting URL**
-- 🖱️ **Click Node**  
+- 🖱️  **Click Node**  
   - Simulates a click on an element using a **CSS selector**
+- ⌨ **Input Node**  
+  - Simulates keyboard input
 - 💾 **Save Node**  
   - Saves extracted content to a **file path** specified by the user
 
